@@ -4,9 +4,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int option = menu(scanner);
+       int option;
+        System.out.print("Welcome! What's your name?: ");
+        String name = scanner.next();
 
-        switch (option) {
+        do{
+            option = menu(scanner,name);
+            switch (option) {
             case 1:
                 bmi(scanner);
                 break;
@@ -21,15 +25,15 @@ public class Main {
             default:
                 System.out.println("\nSee you soon!");
         }
+        } while(option!=0);
 
         scanner.close();
     }
-    static int menu (Scanner scanner){
-        String name;
+    static int menu (Scanner scanner, String name){
+
         int option;
 
-        System.out.print("Welcome! What's your name?: ");
-        name = scanner.next();
+
         System.out.printf("Hello %s, you're in the menu!\n", name);
         System.out.print("Choose the tool you want to use:\n" +
                 "Type 1 to use: BMI Calculator\n" +
@@ -101,14 +105,14 @@ public class Main {
             temperature = scanner.nextDouble();
 
             finalTemperature = ((temperature * 9) / 5) + 32;
-            System.out.printf("The temperature in Fahrenheit is: %.2f", finalTemperature);
+            System.out.printf("The temperature in Fahrenheit is: %.2f°F\n", finalTemperature);
 
         } else {
             System.out.print("Enter the temperature in Fahrenheit: ");
             temperature = scanner.nextDouble();
 
             finalTemperature = (temperature - 32) * (5.0 / 9);
-            System.out.printf("The temperature in Celsius is: %.2f", finalTemperature);
+            System.out.printf("The temperature in Celsius is: %.2f°C\n", finalTemperature);
         }
 
     }
